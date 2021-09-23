@@ -15,7 +15,7 @@
 
 		return {
 			props: {
-				result: sortBy(await res.json(), 'total')
+				result: sortBy(await res.json(), 'total').reverse()
 			}
 		};
 	}
@@ -25,7 +25,7 @@
 	import sortBy from 'lodash.sortby';
 
 	interface IResult {
-		team_name: string;
+		team: string;
 		total: number;
 	}
 
@@ -45,17 +45,18 @@
 {#if result.length}
 	{#each result as resultEntry}
 		<div class="result-entry">
-			<span>{resultEntry.team_name}</span>
+			<span>{resultEntry.team}</span>
 			<span>{resultEntry.total}</span>
 		</div>
 	{/each}
 {:else}
-	<button on:click={computeResult}>Compute results</button>
+	<button on:click={computeResult}>Do compute</button>
 {/if}
 
 <style>
 	.result-entry {
 		display: flex;
 		align-items: center;
+		gap: 8px;
 	}
 </style>
