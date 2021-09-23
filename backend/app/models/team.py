@@ -22,6 +22,10 @@ class Team(db.Model):
         """Get by id."""
         return cls.query.filter_by(id=id).first()
 
+    @classmethod
+    def get_all(cls):
+        return cls.query.all()
+
     def view(self):
         """Object view."""
         return dict(id=self.id, name=self.name)

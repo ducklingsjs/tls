@@ -8,6 +8,11 @@ from app.models.user import User as UserModel
 class User(Resource):
     """User."""
 
+    def get(self):
+        users = UserModel.get_all()
+
+        return [user.view() for user in users]
+
     def post(self):
         """Login."""
         data = request.get_json(force=True)

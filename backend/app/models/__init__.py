@@ -21,6 +21,13 @@ def init_db_command():
     User.create(name="safo", password="safo123")
     User.create(name="andreicek", password="safo123")
 
+    from app.models.team import Team
+    Team.create(name="YOLO")
+    Team.create(name="baby")
+    Team.create(name="vegan")
+    Team.create(name="subway")
+    Team.create(name="organic")
+
     click.echo("Initialized the database.")
 
 

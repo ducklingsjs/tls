@@ -12,7 +12,7 @@ class Rating(Resource):
     def post(self):
         """Create a ating."""
         data = request.get_json(force=True)
-        user = UserModel.get_by_id(id=data["grader_id"])
+        user = UserModel.get_by_name(name=data["username"])
         team = TeamModel.get_by_id(id=data["team_id"])
 
         if user is None:

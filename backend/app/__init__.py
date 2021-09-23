@@ -17,7 +17,11 @@ def create_app(test_config=None):
     )
 
     api = Api(app)
-    CORS(app)
+    CORS(app, resource={
+        "/*": {
+            "origins": "*",
+        }
+    })
 
     # ensure the instance folder exists
     try:
@@ -30,8 +34,11 @@ def create_app(test_config=None):
     from app.controllers.team import Team
     from app.controllers.user import User
     from app.controllers.rating import Rating
+    from app.controllers.result import Result
+
     api.add_resource(Team, '/api/team')
     api.add_resource(User, '/api/user')
     api.add_resource(Rating, '/api/rating')
+    api.add_resource(Result, '/api/result')
 
     return app

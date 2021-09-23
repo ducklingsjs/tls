@@ -9,7 +9,8 @@ class Team(Resource):
 
     def get(self):
         """Index."""
-        teams = TeamModel.query.all()
+        teams = TeamModel.get_all()
+
         return [team.view() for team in teams]
 
     def post(self):

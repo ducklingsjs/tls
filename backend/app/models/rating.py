@@ -23,6 +23,10 @@ class Rating(db.Model):
     cat_functionality = db.Column(db.Integer, nullable=False)
     cat_magic = db.Column(db.Integer, nullable=False)
 
+    __table_args__ = (
+        db.UniqueConstraint('team_id', 'grader_id'),
+    )
+
     @classmethod
     def create(cls, team, grader, cat_works, cat_impressive, cat_topic,
                cat_looks, cat_functionality, cat_magic, cat_inovative):
@@ -32,11 +36,20 @@ class Rating(db.Model):
                         cat_looks=cat_looks, cat_magic=cat_magic,
                         cat_functionality=cat_functionality,
                         cat_inovative=cat_inovative)
-        db.session.add(rating)
-        db.session.commit()
+        try:
+            db.session.add(rating)
+            db.session.commit()
+        except:
+            db.session.rollback()
+            raise
 
         return rating
 
+    @classmethod
+    def get_all(cls):
+        """Get all."""
+        return cls.query.all()
+
     def view(self):
         """Object view."""
-        return dict(id=self.id, team=self.team.id, grader=self.grader.id)
+        return dict(id=self.id, team=self.team.name, grader=self.grader.name)

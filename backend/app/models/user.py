@@ -20,6 +20,10 @@ class User(db.Model):
         return user
 
     @classmethod
+    def get_all(cls):
+        return cls.query.all()
+
+    @classmethod
     def get_by_name(cls, name):
         """Get by name."""
         return cls.query.filter_by(name=name).first()
