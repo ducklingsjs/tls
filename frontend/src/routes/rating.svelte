@@ -2,7 +2,7 @@
 	/**
 	 * @type {import('@sveltejs/kit').Load}
 	 */
-	 export async function load({ page, fetch, session, stuff }) {
+	export async function load({ fetch }) {
 		const url = 'http://10.1.129.58:5000/api/team';
 		const res = await fetch(url);
 
@@ -29,7 +29,7 @@
 		name: string;
 	}
 
-	function handleSubmit(e): void {
+	async function handleSubmit(e): Promise<void> {
 		const formData = new FormData(e.target);
 		const data = {};
 
@@ -37,13 +37,13 @@
 			data[key] = value;
 		});
 
-		fetch('http://localhost:5000/api/rating', {
+		await fetch('http://10.1.129.58:5000/api/rating', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json; charset=utf-8'
 			},
 			body: JSON.stringify(data)
-		})
+		});
 	}
 </script>
 
@@ -52,6 +52,8 @@
 </svelte:head>
 
 <form on:submit|preventDefault={handleSubmit}>
+	<input name="username" placeholder="Username" type="text" />
+
 	<select name="team_id">
 		{#each teams as team}
 			<option value={team.id}>
@@ -64,38 +66,37 @@
 		<tbody>
 			<tr>
 				<td>App works</td>
-				<td><input name="cat_works" type="number" required /></td>
+				<td><input name="cat_works" type="number" required min="0" max="10" /></td>
 			</tr>
 			<tr>
 				<td>Technically impressive</td>
-				<td><input name="cat_impressive" type="number" required /></td>
+				<td><input name="cat_impressive" type="number" required min="0" max="10" /></td>
 			</tr>
 			<tr>
 				<td>Innovative/Fun</td>
-				<td><input name="cat_innovative" type="number" required /></td>
+				<td><input name="cat_inovative" type="number" required min="0" max="30" /></td>
 			</tr>
 			<tr>
 				<td>On topic</td>
-				<td><input name="cat_topic" type="number" required /></td>
+				<td><input name="cat_topic" type="number" required min="0" max="10" /></td>
 			</tr>
 			<tr>
 				<td>Looks</td>
-				<td><input name="cat_looks" type="number" required /></td>
+				<td><input name="cat_looks" type="number" required min="0" max="15" /></td>
 			</tr>
 			<tr>
 				<td>Functionality</td>
-				<td><input name="cat_functionality" type="number" required /></td>
+				<td><input name="cat_functionality" type="number" required min="0" max="15" /></td>
 			</tr>
 			<tr>
 				<td>Magic</td>
-				<td><input name="cat_magic" type="number" required /></td>
+				<td><input name="cat_magic" type="number" required min="0" max="10" /></td>
 			</tr>
 		</tbody>
 	</table>
 
-	<button type=submit>Submit</button>
+	<button type="submit">Submit</button>
 </form>
 
 <style>
-
 </style>
