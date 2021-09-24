@@ -66,31 +66,31 @@
 		<tbody>
 			<tr>
 				<td>App works</td>
-				<td><input name="cat_works" type="number" required min="0" max="10" /></td>
+				<td><input name="cat_works" type="number" required min="0" max="10" />10</td>
 			</tr>
 			<tr>
 				<td>Technically impressive</td>
-				<td><input name="cat_impressive" type="number" required min="0" max="10" /></td>
+				<td><input name="cat_impressive" type="number" required min="0" max="10" />10</td>
 			</tr>
 			<tr>
 				<td>Innovative/Fun</td>
-				<td><input name="cat_inovative" type="number" required min="0" max="30" /></td>
+				<td><input name="cat_inovative" type="number" required min="0" max="30" />30</td>
 			</tr>
 			<tr>
 				<td>On topic</td>
-				<td><input name="cat_topic" type="number" required min="0" max="10" /></td>
+				<td><input name="cat_topic" type="number" required min="0" max="10" />10</td>
 			</tr>
 			<tr>
 				<td>Looks</td>
-				<td><input name="cat_looks" type="number" required min="0" max="15" /></td>
+				<td><input name="cat_looks" type="number" required min="0" max="15" />15</td>
 			</tr>
 			<tr>
 				<td>Functionality</td>
-				<td><input name="cat_functionality" type="number" required min="0" max="15" /></td>
+				<td><input name="cat_functionality" type="number" required min="0" max="15" />15</td>
 			</tr>
 			<tr>
 				<td>Magic</td>
-				<td><input name="cat_magic" type="number" required min="0" max="10" /></td>
+				<td><input name="cat_magic" type="number" required min="0" max="10" />10</td>
 			</tr>
 		</tbody>
 	</table>
